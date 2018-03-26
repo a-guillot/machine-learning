@@ -102,7 +102,7 @@ def persistence_forecast(training, test):
     plt.tight_layout()
 
     # Draw plot
-    plt.savefig(FIGS_DIR + 'persistence.pdf')
+    plt.savefig(FIGS_DIR + 'persistence.png')
 
 ###############################################################################
 # Main
