@@ -3,6 +3,9 @@
 The goal of this repository is to showcase some machine learning applications.
 The main focus will be time series forecasting using Python3.
 
+Acknowledgements: I would like to thank Jason Brownlee for his machine learning
+tutorials on [machinelearningmastery](https://machinelearningmastery.com/).
+
 ## Dataset
 
 The dataset that is going to be used is [Mean summer temperature (in deg. C),
@@ -31,7 +34,7 @@ The dataset is saved inside a `.csv`, which means that it is possible to load it
 using the `read_csv` function.
 The code is the following:
 
-```Python3
+```python
 import pandas as pd
 
 def parser(date):
@@ -52,3 +55,27 @@ dataframe = pd.read_csv(
 Some lines need to be removed, which is why the `skiprows` paremeter is used.
 Aside from that, it us useful to parse dates into a `pandas.Datetime` object to
 be able to perform operations on dates.
+
+## Experimental Setup
+
+The dataset will be separated into two parts: the *training* set, and the
+*test* set.
+In this example, the *training* set will be the first half of the dataset,
+and the *test* set will be the second half.
+This choice is somewhat arbitrary and could be changed to add a *validation*
+set in which parameters would be changed in order to optimize results.
+
+the [sklearn](http://scikit-learn.org/stable/) library can be used to determine
+how well our classifier performed with the use of several 
+[metrics](http://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics).
+In this particular example, regression metrics have to be used in order to
+measure regression performance.
+Here, the [mean absolute error](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html#sklearn.metrics.mean_absolute_error)
+is going to be used.
+
+## Different Forecasting Methods
+
+### Persistence Forecast
+
+This method can be best summarized with 'today equals tomorrow'.
+It means that the value `i+1` is expected to have the same value as `i`.
