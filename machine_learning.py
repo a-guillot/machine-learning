@@ -21,7 +21,7 @@ def load_dataset(mean_summer='mean-summer-temperature-in-deg-c.csv'):
 
     ###########################################################################
 
-    def parse_dates(date):
+    def parser(date):
         """ Takes a year as a parameter and returns a datetime """
 
         return pd.datetime.strptime(date, '%Y')
@@ -34,7 +34,7 @@ def load_dataset(mean_summer='mean-summer-temperature-in-deg-c.csv'):
         index_col=0,  # column to be used as index - 'year' in this case
         skiprows=[0, 210], # skip column names, and the dataset's name
         parse_dates=[0],  # parse first column into dates
-        date_parser=parse_dates  # function used to parse dates
+        date_parser=parser # function used to parse dates
     )
 
 ###############################################################################
