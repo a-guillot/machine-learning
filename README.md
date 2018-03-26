@@ -79,3 +79,41 @@ is going to be used.
 
 This method can be best summarized with 'today equals tomorrow'.
 It means that the value `i+1` is expected to have the same value as `i`.
+
+In order to do so, one needs to implement something close to the following
+code:
+
+```python
+# Last value that has been observed. It is initialized to the last value of
+# the training set because the first value of the test set will be equal to
+# the last value of the training set.
+last_value = training.iloc[-1]
+
+# List that will contain a prediction for every value in test
+predictions = pd.DataFrame(columns=['Temperature'])
+
+# For each value in the training set
+for index, value in test.iterrows():
+    # Append our prediction to the 'predictions' list
+    predictions.loc[index] = last_value
+
+    # Modify the last value to be the current one
+    last_value = value
+
+# Compute mean absolute error
+error = mean_absolute_error(test, predictions)
+
+# Plot of the difference
+plt.plot(test, label='test')
+plt.plot(predictions, label='predictions')
+```
+
+**Note:** The entire code is available in the file 
+[machine_learning.py](machine_learning.py).
+
+Generated figure:
+
+![Persistence](./figs/persistence.png)
+
+As expected, such a naive forecast does not yield good results.
+However, it is a good baseline to compare different methods.
