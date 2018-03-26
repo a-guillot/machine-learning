@@ -14,7 +14,7 @@ Monash University, Australia.
 
 This is what the dataset looks like:
 
-![Dataset][./figs/dataset.png]
+![Dataset](./figs/dataset.png)
 
 This dataset only contains 208 values but I've chosen to use it because a simple
 example will be easier to understand.
